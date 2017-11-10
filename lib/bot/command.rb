@@ -3,26 +3,27 @@ module Bot
   class Command
 
     @moves = {
-      NORTH: [0, 1, :EAST, :WEST],
-      EAST: [1, 0, :SOUTH, :NORTH],
-      SOUTH: [0, -1, :WEST, :EAST],
-      WEST: [-1, 0, :NORTH, :SOUTH] }
+      NORTH: { x: 0, y: 1, right: :EAST, left: :WEST },
+      EAST: { x: 1, y: 0, right: :SOUTH, left: :NORTH },
+      SOUTH: { x: 0, y: -1, right: :WEST, left: :EAST },
+      WEST: { x: -1, y: 0, right: :NORTH, left: :SOUTH }
+    }
 
     def self.place(x, y, f)
       Bot::Position.new(x, y, f)
     end
 
     def self.move(position)
-      position.x += @moves[position.f][0]
-      position.y += @moves[position.f][1]
+      position.x += @moves[position.f][:x]
+      position.y += @moves[position.f][:y]
     end
 
     def self.right(position)
-      position.f = @moves[position.f][2]
+      position.f = @moves[position.f][:right]
     end
 
     def self.left(position)
-      position.f = @moves[position.f][3]
+      position.f = @moves[position.f][:left]
     end
   end
 
