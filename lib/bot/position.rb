@@ -2,13 +2,13 @@ module Bot
 
   class Position
 
-    def initialize(x, y, f)
+    def initialize(x, y, facing)
       @x = x
       @y = y
-      @f = f.upcase.to_sym
+      @facing = facing.upcase.to_sym
     end
 
-    attr_accessor :x, :y, :f
+    attr_accessor :x, :y, :facing
 
   end
 

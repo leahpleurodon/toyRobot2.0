@@ -1,13 +1,16 @@
 require 'bot/position'
 
-describe 'position' do
-
-  let(:botpos) { Bot::Position.new(1, 0, 'West') }
-
-  it 'Creates the bots position as x1 y0 fWest' do
-    expect(botpos.x).to eql(1)
-    expect(botpos.y).to eql(0)
-    expect(botpos.f).to eql(:WEST)
+describe Bot::Position do
+  subject(:botpos){Bot::Position.new(1, 0, 'West')}
+  context 'its given an x,y and facing of 1,0,WEST' do
+    it 'creates bot with x = 1' do
+      expect(botpos.x).to eql(1)
+    end
+    it 'creates bot with y = 0' do
+      expect(botpos.y).to eql(0)
+    end
+    it 'creates bot with facing = :WEST' do
+      expect(botpos.facing).to eql(:WEST)
+    end
   end
-
 end
